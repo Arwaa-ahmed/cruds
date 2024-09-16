@@ -72,9 +72,33 @@ function showdata(){
                     <td>${data[i].total}</td>
                     <td>${data[i].count}</td>
                     <td><button id="update">update</button></td>
-                    <td><button id="update">delete</button></td>
+                    <td><button onclick="deletedata(${i})" id="update">delete</button></td>
                 </tr>
         `
     }
      document.getElementById('tbody').innerHTML=table;
+     let btn=document.getElementById('btn')
+     if(data.length>0){
+        btn.innerHTML=`
+        <button onclick="deleteall()">Delete all</button>
+        `
+     }
+     else{
+        btn.innerHTML=' ';
+     }
+}
+//delete
+function deletedata(i){
+    data.splice(i,1); //بيحذف عنصر واحدالاندكس بتاعه i
+    localStorage.product=JSON.stringify(data); //عشان يشيلها من اللوكال لان غير كدا هتفضل موجودة بسبب انها متشالتش من اللوكال
+    //فبديله الاراي ف شكلها الجديد بعد الحذف
+    showdata(); //عشان يرجع يظهر الداتا كلها م تاني  بشكلها الجديد
+}
+
+//delete all
+function deleteall(){
+    localStorage.clear();
+    data.splice(0);
+    showdata();
+
 }
