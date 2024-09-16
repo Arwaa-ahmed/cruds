@@ -23,7 +23,7 @@ function calc(){
 //create product
 let data;
 if(localStorage.product!=null){
-    data=JSON.parse(localStorage.getItem('product'));
+    data=JSON.parse(localStorage.getItem('product'));//لو اللوكال بتاعتي فيها بيانات حطهم في الاراي الي اسمها داتا
 }
 else{
     data=[];
@@ -42,4 +42,39 @@ create.onclick=function(){
     data.push(newpro);
     localStorage.setItem('product',JSON.stringify(data));
     console.log(data);
+    clear();
+    showdata();
+}
+
+//clear inputs
+function clear(){
+    title.value=' ';
+    price.value=' ';
+    tax.value=' ';
+    ads.value=' ';
+    discount.value=' ';
+    count.value=' ';
+    total.innerHTML=' ';
+    category.value=' ';
+}
+//read
+function showdata(){
+    let table='';
+    for(let i=0;i<data.length;i++){
+        table+=`
+          <tr>
+                    <td>${i}</td>
+                    <td>${data[i].title}</td>
+                    <td>${data[i].price}</td>
+                    <td>${data[i].tax}/td>
+                    <td>${data[i].ads}</td>
+                    <td>${data[i].discount}</td>
+                    <td>${data[i].total}</td>
+                    <td>${data[i].count}</td>
+                    <td><button id="update">update</button></td>
+                    <td><button id="update">delete</button></td>
+                </tr>
+        `
+    }
+     document.getElementById('tbody').innerHTML=table;
 }
