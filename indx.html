@@ -25,10 +25,10 @@
             <button id="create">create</button>
         </div>
         <div id="search">
-            <input type="search" placeholder="search" name="" id="search2">
+            <input onkeyup="searchdata(this.value)" type="search" placeholder="search" name="" id="search2">
             <div class="searchby">
-                <button>search by title</button>
-                <button>search by category</button>
+                <button id="serchtitle" onclick="getsearch(this.id)">search by title</button>
+                <button id="searchcategory" onclick="getsearch(this.id)">search by category</button>
             </div>
         </div>
         <div id="btn"></div>
@@ -41,6 +41,7 @@
                 <th>ads</th>
                 <th>discount</th>
                 <th>total</th>
+                <th>count</th>
                 <th>category</th>
                 <th>update</th>
                 <th>delete</th>
